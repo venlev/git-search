@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { faCodeBranch, faStar, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
+  @Input() data: object;
+  fork = faCodeBranch;
+  star = faStar;
+  issues = faClipboardList;
+
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }
