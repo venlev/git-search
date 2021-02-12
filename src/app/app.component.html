@@ -1,4 +1,4 @@
 <app-menu></app-menu>
-<div class="main-container" *ngFor="let result of queryResults">
-    <app-card [data]="result"></app-card>
+<div class="main-container">
+    <app-card [data]="result" *ngFor="let result of queryResults"></app-card>
 </div>

@@ -1,3 +1,10 @@
 .repo-search{
     width: 50vw !important;
 }
+
+.search-nav{
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+}
