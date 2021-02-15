@@ -8,3 +8,8 @@
     width: 100%;
     top: 0px;
 }
+.result-screen{
+    margin: 4px;
+    margin-left: 15px;
+    color: rgba(255, 255, 255, 0.438);
+}
