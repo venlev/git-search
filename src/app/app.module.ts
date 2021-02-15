@@ -7,6 +7,7 @@ import { CardComponent } from './card/card.component';
 import { SearchMenuComponent } from './search-menu/search-menu.component';
 import { ApiService } from './services/api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
