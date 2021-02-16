@@ -7,7 +7,7 @@
         <form (keydown.enter)="queryGit()">
           <input type="text" class="form-control repo-search" placeholder="find repository" aria-label="repository" aria-describedby="github-repo" [(ngModel)]="query" [ngModelOptions]="{standalone:true}">
         </form>
-        <span class="font-weight-light text-light result-screen">{{nOfResult}} results found</span>
+        <span class="font-weight-light text-light result-screen">{{amountOfResults}} results found</span>
       </div>
     </form>
   </nav>

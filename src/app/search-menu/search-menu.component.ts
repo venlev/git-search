@@ -10,13 +10,13 @@ import { ApiService } from '../services/api.service';
 export class SearchMenuComponent implements OnInit {
   query: string;
   api: ApiService;
-  nOfResult: number = 0;
+  amountOfResults: number = 0;
 
   constructor(api: ApiService) {
     this.api = api;
 
-    api.numberOfFinds.subscribe(n => {
-      this.nOfResult = n
+    this.api.result.subscribe(res => {
+      this.amountOfResults = res["total_count"];
     });
   }
 

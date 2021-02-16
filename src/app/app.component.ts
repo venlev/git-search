@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service' 
+import { ApiService } from './services/api.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,12 @@ export class AppComponent implements OnInit{
   constructor(private api: ApiService){
     api.result.subscribe(res =>{
       this.queryResults = res["items"];
-      console.log(this.queryResults);
+      //console.log(this.queryResults);
     })
 
     api.requestData('string');
   }
 
   ngOnInit(){
-
   }
 }

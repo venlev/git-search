@@ -1,3 +1,30 @@
 .main-container{
     margin-top: 4rem;
 }
+
+.loader{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.loading-text{
+    font-size: 3rem;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+.wait-text{
+    width: 15rem;
+    letter-spacing: 0.5rem;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.display-none{
+    display: none;
+}

@@ -8,7 +8,8 @@ import { SearchMenuComponent } from './search-menu/search-menu.component';
 import { ApiService } from './services/api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-import { DetailviewComponent } from './detailview/detailview.component'
+import { DetailviewComponent } from './detailview/detailview.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DetailviewComponent } from './detailview/detailview.component'
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
