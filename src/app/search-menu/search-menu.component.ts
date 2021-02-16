@@ -9,24 +9,20 @@ import { ApiService } from '../services/api.service';
 })
 export class SearchMenuComponent implements OnInit {
   query: string;
-  api: ApiService;
-  amountOfResults: number = 0;
+  amountOfResults: number;
 
-  constructor(api: ApiService) {
-    this.api = api;
-
-    this.api.result.subscribe(res => {
-      this.amountOfResults = res["total_count"];
-    });
+  constructor(private api: ApiService) {
+    this.api.data.subscribe(allData=>{
+      this.amountOfResults = allData['total_count']
+    })
   }
 
-  queryGit(){
-    this.api.requestData(this.query);
-    this.query = '';
+  queryGit(event){
+    this.api.requestData(event.target.value)
+    event.target.value = '';
   }
 
   ngOnInit(): void {
-    
   }
 
 }

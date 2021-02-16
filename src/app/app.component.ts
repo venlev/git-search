@@ -12,14 +12,12 @@ export class AppComponent implements OnInit{
   queryResults: object[];
 
   constructor(private api: ApiService){
-    api.result.subscribe(res =>{
-      this.queryResults = res["items"];
-      //console.log(this.queryResults);
-    })
-
-    api.requestData('string');
+  
   }
 
   ngOnInit(){
+    this.api.data.subscribe(res =>{
+      this.queryResults = res["items"];
+    })
   }
 }

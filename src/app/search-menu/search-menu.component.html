@@ -4,10 +4,8 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><img src="../../assets/gitlogo.png" class="smicon" alt=""></span>
         </div>
-        <form (keydown.enter)="queryGit()">
-          <input type="text" class="form-control repo-search" placeholder="find repository" aria-label="repository" aria-describedby="github-repo" [(ngModel)]="query" [ngModelOptions]="{standalone:true}">
-        </form>
-        <span class="font-weight-light text-light result-screen">{{amountOfResults}} results found</span>
+          <input type="text" (keydown.enter)="queryGit($event)" class="form-control repo-search" placeholder="find repository" aria-label="repository" aria-describedby="github-repo">
+        <span class="font-weight-light text-light result-screen">{{amountOfResults || 'no'}} results found</span>
       </div>
     </form>
   </nav>

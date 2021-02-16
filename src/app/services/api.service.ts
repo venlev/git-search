@@ -12,25 +12,21 @@ export class ApiService {
 
   //[{},{}]
 
-  get result(): Observable<object> {
+  get data(): Observable<object> {
     return this.data$.asObservable();
   }
 
-  requestData(query: string) {
 
-    fromFetch(`https://api.github.com/search/repositories?q=${query}`).pipe(
-      switchMap(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return of({ error: true, message: `Error ${response.status}` });
-        }
-      }),
+  constructor(private http: HttpClient){
+    
+  }
+
+  requestData(query: string) {
+    this.http.get(`https://api.github.com/search/repositories?q=${query}`).pipe(
       catchError(err => {
         return of({ error: true, message: err.message })
-      }),
-      tap(r => this.data$.next(r))
-    ).subscribe();
+      })
+    ).subscribe(r => this.data$.next(r))
 
   }
 }
