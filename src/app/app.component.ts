@@ -2,18 +2,23 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef, Renderer2, OnDe
 import { ApiService } from './services/api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ScrollService } from './services/scroll.service';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   title = 'git-search';
   queryResults: object[];
   fixedBoxOffsetTop: number = 0;
   fixedBoxOffsetTopOtherMethod: number = 0;
-  listener
+  listener;
+  isQueried: boolean;
+  searchIco = faSearch;
+
   /*
   @ViewChild('contentbox') contentList: ElementRef;
   
@@ -28,6 +33,9 @@ export class AppComponent implements OnInit {
   */
 
   constructor(private api: ApiService, private renderer2: Renderer2) {
+    api.isQueried.subscribe(ans=>{
+      this.isQueried = ans;
+    })
     /*this.listener = this.renderer2.listen('window', 'scroll', (e) => {
       console.log(this.getYPosition(e));
     });*/

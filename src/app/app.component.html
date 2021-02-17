@@ -1,6 +1,10 @@
 <app-menu></app-menu>
 <div class="main-container contentbox" #contentbox (window:scroll)="onWindowScroll($event)">
-    
+    <div class="default-content" *ngIf="!isQueried">
+        <p class="default-title">GitHub Search</p>
+        <fa-icon [icon]="searchIco" class="srcLog fa-10x"></fa-icon>
+        <p class="default-text">Search for a public repo!</p>
+    </div>
     <app-card [data]="result" *ngFor="let result of queryResults"></app-card>
     <router-outlet></router-outlet>
 </div>
