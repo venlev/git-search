@@ -8,7 +8,7 @@ import { ScrollService } from './services/scroll.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   title = 'git-search';
   queryResults: object[];
   fixedBoxOffsetTop: number = 0;
@@ -28,19 +28,26 @@ export class AppComponent implements OnInit, OnDestroy {
   */
 
   constructor(private api: ApiService, private renderer2: Renderer2) {
-    this.listener = this.renderer2.listen('window', 'scroll', (e) => {
+    /*this.listener = this.renderer2.listen('window', 'scroll', (e) => {
       console.log(this.getYPosition(e));
-    });
+    });*/
   }
 
-  getYPosition(e: Event): any {
+  onWindowScroll($event){
+    console.log("max ",Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ));
+    console.log(window.scrollY);
+  }
+
+  /*
+  getYPosition(e: Event): number {
+    console.log(e)
     return (e.target as Element).scrollTop;
   }
 
   ngOnDestroy(): void {
     this.listener();
   }
-
+  */
   ngOnInit() {
     this.api.data.subscribe(res => {
       this.queryResults = res["items"];
