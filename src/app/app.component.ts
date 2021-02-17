@@ -34,7 +34,9 @@ export class AppComponent implements OnInit {
   }
 
   onWindowScroll($event){
-    console.log("max ",Math.max( document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight ));
+    //el.scrollHeight - el.scrollTop - el.clientHeight < 1
+    //console.log(document.querySelector('.contentbox').scrollHeight, document.querySelector('.contentbox'), document.querySelector('.contentbox').clientHeight)
+    //console.log("max ", document.querySelector('.contentbox').scrollHeight - document.querySelector('.contentbox').clientHeight);
     console.log(window.scrollY);
   }
 
