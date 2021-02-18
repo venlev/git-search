@@ -1,7 +1,6 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ScrollService } from './services/scroll.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 let cooldown = true;
@@ -14,7 +13,7 @@ window.addEventListener('scroll', ()=>{
   let scrollPercentRounded = Math.round(scrollPercent * 100);
 
   if(scrollPercentRounded === 100 && cooldown){
-    console.log('call');
+    AppComponent.nextPage();
     cooldown = false;
     setTimeout(()=>{
       cooldown = true;
@@ -38,6 +37,10 @@ export class AppComponent implements OnInit {
     api.isQueried.subscribe(ans=>{
       this.isQueried = ans;
     })
+  }
+
+  static nextPage(){
+    console.log('next')
   }
 
   ngOnInit() {

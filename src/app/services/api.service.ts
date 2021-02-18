@@ -9,28 +9,38 @@ export class ApiService {
 
   private data$: BehaviorSubject<object> = new BehaviorSubject({});
   private results$: BehaviorSubject<number> = new BehaviorSubject(0);
-  private isQuery$: BehaviorSubject<boolean> = new BehaviorSubject(false)
+  private isQuery$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private page: number;
+  private oldQuery: string;
 
   get data(): Observable<object> {
     return this.data$.asObservable();
   }
 
-  get isQueried(): Observable<boolean>{
+  get isQueried(): Observable<boolean> {
     return this.isQuery$.asObservable();
   }
 
 
-  constructor(private http: HttpClient){
-    
+  constructor(private http: HttpClient) {
+
   }
 
-  requestData(query: string) {
+  requestData(query: string, pagination?:string) {
+    this.oldQuery = query;
     this.isQuery$.next(true);
-    this.http.get(`https://api.github.com/search/repositories?q=${query}`).pipe(
+    this.http.get(`https://api.github.com/search/repositories?q=${query}${pagination}`).pipe(
       catchError(err => {
         return of({ error: true, message: err.message })
       })
     ).subscribe(r => this.data$.next(r))
 
+  }
+
+  nextPage() {
+    if (typeof this.page !== "undefined") this.page = 1
+    let paging = `?page=${this.page}`;
+    //this.requestData(this.oldQuery, paging);
+    this.page ++;
   }
 }
