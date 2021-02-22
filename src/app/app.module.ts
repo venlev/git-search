@@ -10,13 +10,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { DetailviewComponent } from './detailview/detailview.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IssueComponent } from './issue/issue.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     SearchMenuComponent,
-    DetailviewComponent
+    DetailviewComponent,
+    IssueComponent
   ],
   imports: [
     BrowserModule,

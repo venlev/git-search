@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 let cooldown = true;
+let isNext: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
 window.addEventListener('scroll', ()=>{
   let scrollTop = window.scrollY;
@@ -32,20 +33,27 @@ export class AppComponent implements OnInit {
   queryResults: object[];
   isQueried: boolean;
   searchIco = faSearch;
+  
 
   constructor(private api: ApiService, private renderer2: Renderer2) {
     api.isQueried.subscribe(ans=>{
       this.isQueried = ans;
     })
   }
-
+  
   static nextPage(){
-    console.log('next')
+    console.log('next');
+    isNext.next(true);
   }
 
   ngOnInit() {
-    this.api.data.subscribe(res => {
-      this.queryResults = res["items"];
+    this.api.items.subscribe(res => {
+      this.queryResults = res;
+      console.log(res)
+    })
+
+    isNext.subscribe(response=>{
+      if(response) this.api.nextPage();
     })
   }
 }

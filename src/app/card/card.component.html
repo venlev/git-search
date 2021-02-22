@@ -10,7 +10,7 @@
       </div>
       
       <p class="card-text">{{data['description']}}</p>
-      <a href="#" class="card-link btn btn-dark" [routerLink]="['/details']">Show available issues</a>
+      <a href="#" class="card-link btn btn-dark" [routerLink]="['/details', data['id']]">Show available issues</a>
       <a href="#" class="card-link btn btn-light">Go to top!</a>
     </div>
 </div>
